@@ -1,0 +1,5 @@
+<map id="CheckSettings" name="CheckSettings">
+<area shape="rect" id="Node000001" title="Compare settings insight sensor and given instance of settings." alt="" coords="5,5,112,32"/>
+<area shape="rect" id="Node000002" href="$dd/dad/a00005.html#af8cce9b742da4542995d2e4e34560989" title="read all registers from sensor" alt="" coords="160,5,265,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,16,144,16,144,21,112,21"/>
+</map>

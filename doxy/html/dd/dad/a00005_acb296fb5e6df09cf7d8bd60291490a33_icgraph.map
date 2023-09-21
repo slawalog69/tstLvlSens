@@ -1,0 +1,7 @@
+<map id="Write_Settings" name="Write_Settings">
+<area shape="rect" id="Node000001" title="write settings to sensor" alt="" coords="151,31,258,57"/>
+<area shape="rect" id="Node000002" href="$dd/dad/a00005.html#ab388b1960fa20cb2e0ddc6a8316c5202" title="initialization of sensor" alt="" coords="8,5,100,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,35,100,29,101,24,136,30"/>
+<area shape="rect" id="Node000003" href="$dd/dad/a00005.html#a7527fdbdb826936bdf1529357eca12e6" title="runtime get level" alt="" coords="5,56,103,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,58,103,64,102,59,135,53"/>
+</map>

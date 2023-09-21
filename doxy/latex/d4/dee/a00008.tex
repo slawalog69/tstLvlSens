@@ -1,0 +1,525 @@
+\doxysection{UNITS/unit.h File Reference}
+\hypertarget{a00008}{}\label{a00008}\index{UNITS/unit.h@{UNITS/unit.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{a00015}{\+\_\+sens\+Reg\+\_\+bitmap}}
+\begin{DoxyCompactList}\small\item\em bitmap of registers \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{a00023}{\+\_\+\+Regs}}
+\begin{DoxyCompactList}\small\item\em struct registers of sensor \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{a00027}{\+\_\+lvl\+\_\+sens}}
+\begin{DoxyCompactList}\small\item\em struct of level sensor ~\newline
+ \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{a00031}{\+\_\+sens\+\_\+sett}}
+\begin{DoxyCompactList}\small\item\em struct of settings sensor ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{a00008_a2674bfbb4d00283d46f6a46b436f59f4}{Is\+In\+Range}}(x,  min,  max)~x$<$ min ? 0 \+: x $>$ max ? 0\+: 1
+\item 
+\#define \mbox{\hyperlink{a00008_ab35eb42b4957aaf237c204b0cc078d52}{Fill\+On\+Band}}(x,  min,  max)~x $<$ min ?  (x = min )  \+:  x $>$ max ? (x = max)  \+: (x = x)
+\item 
+\#define \mbox{\hyperlink{a00008_afd8c16fb4f5b1df43ee3446a5d635a29}{CALC\+\_\+\+DELAY\+\_\+\+MS}}(x)~x $>$ 0 ? (int)(10000.\+0f/(float)x + 1) \+: 10000
+\begin{DoxyCompactList}\small\item\em Get time of period from frequensy SPS. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{a00008_a8add40b8b0e50d0cf99275d55cb1a894}{CALC\+\_\+\+RESOLUTION}}(x)
+\begin{DoxyCompactList}\small\item\em Get resolution of sampling. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{a00008_a8e5ff4392f5959085158d690eefe5659}{RDY}}~Regs\+Sens\mbox{[}\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}{Status}}\mbox{]}.bits.\+b.\+b0
+\begin{DoxyCompactList}\small\item\em Get 0 bit from register Status. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{a00008_a5216d2e3e3239980d8a5619ead0b9542}{OVF}}~Regs\+Sens\mbox{[}\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}{Status}}\mbox{]}.bits.\+b.\+b1
+\begin{DoxyCompactList}\small\item\em Get 1 bit from register Status. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{a00008_a735563036dced0b7d6cc98f97ea4978b}{ERR}}~Regs\+Sens\mbox{[}\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}{Status}}\mbox{]}.bits.\+b.\+b2
+\begin{DoxyCompactList}\small\item\em Get 2 bit from register Status. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{a00008_a0cbea62f1ce2043dd08108e65ed8de1d}{SCALE}}~Regs\+Sens\mbox{[}\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfafce22dbfac1abe111694582ef911007e}{Scale}}\mbox{]}.bits.\+raw \& 0x03
+\begin{DoxyCompactList}\small\item\em Get two bits from register SCALE. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{a00008_a828c4276f3339f7ae88b061c0c444408}{VAL\+\_\+\+SENS}}(x)
+\begin{DoxyCompactList}\small\item\em Concat value H and L byte of registers ValueH and ValueL. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{a00008_a57f230e22a4e777a8b10c1838bc9910c}{CALC\+\_\+\+DEPTH}}(x,  v,  r)~((float)x/((float)r) \texorpdfstring{$\ast$}{*} v)
+\begin{DoxyCompactList}\small\item\em Calc level vs SCALE and resolution. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{a00008_a0988fc69a4d6edef51b89d412eb1af0c}{PARS\+\_\+\+VAL}}(x,  v)
+\begin{DoxyCompactList}\small\item\em Convert value of ValueH, ValueL regs to meners. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\+\_\+t \mbox{\hyperlink{a00008_a92c50087ca0e64fa93fc59402c55f8ca}{u8}}
+\item 
+typedef uint16\+\_\+t \mbox{\hyperlink{a00008_ace9d960e74685e2cd84b36132dbbf8aa}{u16}}
+\item 
+typedef union \mbox{\hyperlink{a00015}{\+\_\+sens\+Reg\+\_\+bitmap}} \mbox{\hyperlink{a00008_ac045d69d928733ae1dc428f5a229697e}{Reg\+\_\+bitmap}}
+\begin{DoxyCompactList}\small\item\em bitmap of registers \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{a00023}{\+\_\+\+Regs}} \mbox{\hyperlink{a00008_a22415de9891e85ae58c63539318448c9}{Regs}}
+\begin{DoxyCompactList}\small\item\em struct registers of sensor \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{a00027}{\+\_\+lvl\+\_\+sens}} \mbox{\hyperlink{a00008_a36c7ac0b0ecc5ad267d84396398e7ed9}{lvl\+\_\+sens}}
+\begin{DoxyCompactList}\small\item\em struct of level sensor ~\newline
+ \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{a00031}{\+\_\+sens\+\_\+sett}} \mbox{\hyperlink{a00008_a23b43565be4d8fd053ccccbaf8d3f87d}{sens\+\_\+sett}}
+\begin{DoxyCompactList}\small\item\em struct of settings sensor ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccf}{enm\+Regs}} \{ \newline
+\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}{Status}} = 0
+, \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa1fd765afe57f4f4d76ef35e29c987344}{SPS\+\_\+H}}
+, \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfab57f7a7549307cb6c577654488969c85}{SPS\+\_\+L}}
+, \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa92793663441ced378f4676b8a6524385}{Reset}}
+, \newline
+\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfafce22dbfac1abe111694582ef911007e}{Scale}}
+, \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfaa3f554d2e12582620532b0a55bfd9ecd}{ValueH}}
+, \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa4a85e82db31fc73cd86b24bda3ddfc38}{ValueL}}
+ \}
+\begin{DoxyCompactList}\small\item\em indexes of registers \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00008_a36c7ac0b0ecc5ad267d84396398e7ed9}{lvl\+\_\+sens}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{a00008_ab388b1960fa20cb2e0ddc6a8316c5202}{Ini\+\_\+\+Lvl\+\_\+sens}} (i2c\+\_\+t dev, \mbox{\hyperlink{a00008_ace9d960e74685e2cd84b36132dbbf8aa}{u16}} adr, \mbox{\hyperlink{a00008_a92c50087ca0e64fa93fc59402c55f8ca}{u8}} flags)
+\begin{DoxyCompactList}\small\item\em initialization of sensor \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{a00008_a7527fdbdb826936bdf1529357eca12e6}{runtime\+Cycle}} (\mbox{\hyperlink{a00008_a36c7ac0b0ecc5ad267d84396398e7ed9}{lvl\+\_\+sens}} \texorpdfstring{$\ast$}{*}p\+\_\+sens)
+\begin{DoxyCompactList}\small\item\em runtime get level \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{a00008_afd8c16fb4f5b1df43ee3446a5d635a29}\label{a00008_afd8c16fb4f5b1df43ee3446a5d635a29} 
+\index{unit.h@{unit.h}!CALC\_DELAY\_MS@{CALC\_DELAY\_MS}}
+\index{CALC\_DELAY\_MS@{CALC\_DELAY\_MS}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{CALC\_DELAY\_MS}{CALC\_DELAY\_MS}}
+{\footnotesize\ttfamily \#define CALC\+\_\+\+DELAY\+\_\+\+MS(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~x $>$ 0 ? (int)(10000.\+0f/(float)x + 1) \+: 10000}
+
+
+
+Get time of period from frequensy SPS. 
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00060}{60}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+\Hypertarget{a00008_a57f230e22a4e777a8b10c1838bc9910c}\label{a00008_a57f230e22a4e777a8b10c1838bc9910c} 
+\index{unit.h@{unit.h}!CALC\_DEPTH@{CALC\_DEPTH}}
+\index{CALC\_DEPTH@{CALC\_DEPTH}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{CALC\_DEPTH}{CALC\_DEPTH}}
+{\footnotesize\ttfamily \#define CALC\+\_\+\+DEPTH(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{v,  }\item[{}]{r }\end{DoxyParamCaption})~((float)x/((float)r) \texorpdfstring{$\ast$}{*} v)}
+
+
+
+Calc level vs SCALE and resolution. 
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00080}{80}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+\Hypertarget{a00008_a8add40b8b0e50d0cf99275d55cb1a894}\label{a00008_a8add40b8b0e50d0cf99275d55cb1a894} 
+\index{unit.h@{unit.h}!CALC\_RESOLUTION@{CALC\_RESOLUTION}}
+\index{CALC\_RESOLUTION@{CALC\_RESOLUTION}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{CALC\_RESOLUTION}{CALC\_RESOLUTION}}
+{\footnotesize\ttfamily \#define CALC\+\_\+\+RESOLUTION(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ x\ <\ \ 2\ ?\ 32767\ :\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ x\ <\ \ 11\ ?\ 4095\ :\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ x\ <\ \ 101\ ?\ 1023\ :\ 255}
+
+\end{DoxyCode}
+
+
+Get resolution of sampling. 
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00063}{63}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \(\backslash\)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ x\ <\ \ 11\ ?\ 4095\ :\(\backslash\)}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ x\ <\ \ 101\ ?\ 1023\ :\ 255}
+
+\end{DoxyCode}
+\Hypertarget{a00008_a735563036dced0b7d6cc98f97ea4978b}\label{a00008_a735563036dced0b7d6cc98f97ea4978b} 
+\index{unit.h@{unit.h}!ERR@{ERR}}
+\index{ERR@{ERR}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{ERR}{ERR}}
+{\footnotesize\ttfamily \#define ERR~Regs\+Sens\mbox{[}\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}{Status}}\mbox{]}.bits.\+b.\+b2}
+
+
+
+Get 2 bit from register Status. 
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00073}{73}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+\Hypertarget{a00008_ab35eb42b4957aaf237c204b0cc078d52}\label{a00008_ab35eb42b4957aaf237c204b0cc078d52} 
+\index{unit.h@{unit.h}!FillOnBand@{FillOnBand}}
+\index{FillOnBand@{FillOnBand}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{FillOnBand}{FillOnBand}}
+{\footnotesize\ttfamily \#define Fill\+On\+Band(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{min,  }\item[{}]{max }\end{DoxyParamCaption})~x $<$ min ?  (x = min )  \+:  x $>$ max ? (x = max)  \+: (x = x)}
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00020}{20}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+\Hypertarget{a00008_a2674bfbb4d00283d46f6a46b436f59f4}\label{a00008_a2674bfbb4d00283d46f6a46b436f59f4} 
+\index{unit.h@{unit.h}!IsInRange@{IsInRange}}
+\index{IsInRange@{IsInRange}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{IsInRange}{IsInRange}}
+{\footnotesize\ttfamily \#define Is\+In\+Range(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{min,  }\item[{}]{max }\end{DoxyParamCaption})~x$<$ min ? 0 \+: x $>$ max ? 0\+: 1}
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00019}{19}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+\Hypertarget{a00008_a5216d2e3e3239980d8a5619ead0b9542}\label{a00008_a5216d2e3e3239980d8a5619ead0b9542} 
+\index{unit.h@{unit.h}!OVF@{OVF}}
+\index{OVF@{OVF}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{OVF}{OVF}}
+{\footnotesize\ttfamily \#define OVF~Regs\+Sens\mbox{[}\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}{Status}}\mbox{]}.bits.\+b.\+b1}
+
+
+
+Get 1 bit from register Status. 
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00071}{71}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+\Hypertarget{a00008_a0988fc69a4d6edef51b89d412eb1af0c}\label{a00008_a0988fc69a4d6edef51b89d412eb1af0c} 
+\index{unit.h@{unit.h}!PARS\_VAL@{PARS\_VAL}}
+\index{PARS\_VAL@{PARS\_VAL}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{PARS\_VAL}{PARS\_VAL}}
+{\footnotesize\ttfamily \#define PARS\+\_\+\+VAL(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{v }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (x-\/>SCALE)\ ==\ 0\ ?\mbox{\hyperlink{a00008_a57f230e22a4e777a8b10c1838bc9910c}{CALC\_DEPTH}}(1,v,x-\/>range):\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (x-\/>SCALE)\ \ ==\ 1\ ?\mbox{\hyperlink{a00008_a57f230e22a4e777a8b10c1838bc9910c}{CALC\_DEPTH}}(3,v,x-\/>range):\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (x-\/>SCALE)\ \ ==\ 2\ ?\mbox{\hyperlink{a00008_a57f230e22a4e777a8b10c1838bc9910c}{CALC\_DEPTH}}(5,v,x-\/>range):\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CALC\_DEPTH(10,v,x-\/>range)}
+
+\end{DoxyCode}
+
+
+Convert value of ValueH, ValueL regs to meners. 
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00082}{82}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \(\backslash\)}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ (x-\/>SCALE)\ \ ==\ 1\ ?\mbox{\hyperlink{a00008_a57f230e22a4e777a8b10c1838bc9910c}{CALC\_DEPTH}}(3,v,x-\/>range):\ \(\backslash\)}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ (x-\/>SCALE)\ \ ==\ 2\ ?\mbox{\hyperlink{a00008_a57f230e22a4e777a8b10c1838bc9910c}{CALC\_DEPTH}}(5,v,x-\/>range):\ \(\backslash\) }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ CALC\_DEPTH(10,v,x-\/>range)}
+
+\end{DoxyCode}
+\Hypertarget{a00008_a8e5ff4392f5959085158d690eefe5659}\label{a00008_a8e5ff4392f5959085158d690eefe5659} 
+\index{unit.h@{unit.h}!RDY@{RDY}}
+\index{RDY@{RDY}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{RDY}{RDY}}
+{\footnotesize\ttfamily \#define RDY~Regs\+Sens\mbox{[}\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}{Status}}\mbox{]}.bits.\+b.\+b0}
+
+
+
+Get 0 bit from register Status. 
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00069}{69}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+\Hypertarget{a00008_a0cbea62f1ce2043dd08108e65ed8de1d}\label{a00008_a0cbea62f1ce2043dd08108e65ed8de1d} 
+\index{unit.h@{unit.h}!SCALE@{SCALE}}
+\index{SCALE@{SCALE}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{SCALE}{SCALE}}
+{\footnotesize\ttfamily \#define SCALE~Regs\+Sens\mbox{[}\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfafce22dbfac1abe111694582ef911007e}{Scale}}\mbox{]}.bits.\+raw \& 0x03}
+
+
+
+Get two bits from register SCALE. 
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00075}{75}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+\Hypertarget{a00008_a828c4276f3339f7ae88b061c0c444408}\label{a00008_a828c4276f3339f7ae88b061c0c444408} 
+\index{unit.h@{unit.h}!VAL\_SENS@{VAL\_SENS}}
+\index{VAL\_SENS@{VAL\_SENS}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{VAL\_SENS}{VAL\_SENS}}
+{\footnotesize\ttfamily \#define VAL\+\_\+\+SENS(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ ((\mbox{\hyperlink{a00008_ace9d960e74685e2cd84b36132dbbf8aa}{u16}})x-\/>RegsSens[\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfaa3f554d2e12582620532b0a55bfd9ecd}{ValueH}}].bits.raw\ <<\ 8)|\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ (x-\/>RegsSens[\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfaa3f554d2e12582620532b0a55bfd9ecd}{ValueH}}].bits.raw)}
+
+\end{DoxyCode}
+
+
+Concat value H and L byte of registers ValueH and ValueL. 
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00077}{77}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{a00008_a36c7ac0b0ecc5ad267d84396398e7ed9}\label{a00008_a36c7ac0b0ecc5ad267d84396398e7ed9} 
+\index{unit.h@{unit.h}!lvl\_sens@{lvl\_sens}}
+\index{lvl\_sens@{lvl\_sens}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{lvl\_sens}{lvl\_sens}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{a00027}{\+\_\+lvl\+\_\+sens}} \mbox{\hyperlink{a00008_a36c7ac0b0ecc5ad267d84396398e7ed9}{lvl\+\_\+sens}}}
+
+
+
+struct of level sensor ~\newline
+ 
+
+\Hypertarget{a00008_ac045d69d928733ae1dc428f5a229697e}\label{a00008_ac045d69d928733ae1dc428f5a229697e} 
+\index{unit.h@{unit.h}!Reg\_bitmap@{Reg\_bitmap}}
+\index{Reg\_bitmap@{Reg\_bitmap}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{Reg\_bitmap}{Reg\_bitmap}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{a00015}{\+\_\+sens\+Reg\+\_\+bitmap}} \mbox{\hyperlink{a00008_ac045d69d928733ae1dc428f5a229697e}{Reg\+\_\+bitmap}}}
+
+
+
+bitmap of registers 
+
+\Hypertarget{a00008_a22415de9891e85ae58c63539318448c9}\label{a00008_a22415de9891e85ae58c63539318448c9} 
+\index{unit.h@{unit.h}!Regs@{Regs}}
+\index{Regs@{Regs}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{Regs}{Regs}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{a00023}{\+\_\+\+Regs}} \mbox{\hyperlink{a00008_a22415de9891e85ae58c63539318448c9}{Regs}}}
+
+
+
+struct registers of sensor 
+
+\Hypertarget{a00008_a23b43565be4d8fd053ccccbaf8d3f87d}\label{a00008_a23b43565be4d8fd053ccccbaf8d3f87d} 
+\index{unit.h@{unit.h}!sens\_sett@{sens\_sett}}
+\index{sens\_sett@{sens\_sett}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{sens\_sett}{sens\_sett}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{a00031}{\+\_\+sens\+\_\+sett}} \mbox{\hyperlink{a00008_a23b43565be4d8fd053ccccbaf8d3f87d}{sens\+\_\+sett}}}
+
+
+
+struct of settings sensor ~\newline
+ 
+
+\Hypertarget{a00008_ace9d960e74685e2cd84b36132dbbf8aa}\label{a00008_ace9d960e74685e2cd84b36132dbbf8aa} 
+\index{unit.h@{unit.h}!u16@{u16}}
+\index{u16@{u16}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{u16}{u16}}
+{\footnotesize\ttfamily typedef uint16\+\_\+t \mbox{\hyperlink{a00008_ace9d960e74685e2cd84b36132dbbf8aa}{u16}}}
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00016}{16}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+\Hypertarget{a00008_a92c50087ca0e64fa93fc59402c55f8ca}\label{a00008_a92c50087ca0e64fa93fc59402c55f8ca} 
+\index{unit.h@{unit.h}!u8@{u8}}
+\index{u8@{u8}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{u8}{u8}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t \mbox{\hyperlink{a00008_a92c50087ca0e64fa93fc59402c55f8ca}{u8}}}
+
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00015}{15}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{a00008_a7db25bf19d57ba0281f282d35bcd6ccf}\label{a00008_a7db25bf19d57ba0281f282d35bcd6ccf} 
+\index{unit.h@{unit.h}!enmRegs@{enmRegs}}
+\index{enmRegs@{enmRegs}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{enmRegs}{enmRegs}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccf}{enm\+Regs}}}
+
+
+
+indexes of registers 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Status@{Status}!unit.h@{unit.h}}\index{unit.h@{unit.h}!Status@{Status}}}\Hypertarget{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}\label{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72} 
+Status&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPS\_H@{SPS\_H}!unit.h@{unit.h}}\index{unit.h@{unit.h}!SPS\_H@{SPS\_H}}}\Hypertarget{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa1fd765afe57f4f4d76ef35e29c987344}\label{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa1fd765afe57f4f4d76ef35e29c987344} 
+SPS\+\_\+H&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPS\_L@{SPS\_L}!unit.h@{unit.h}}\index{unit.h@{unit.h}!SPS\_L@{SPS\_L}}}\Hypertarget{a00008_a7db25bf19d57ba0281f282d35bcd6ccfab57f7a7549307cb6c577654488969c85}\label{a00008_a7db25bf19d57ba0281f282d35bcd6ccfab57f7a7549307cb6c577654488969c85} 
+SPS\+\_\+L&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Reset@{Reset}!unit.h@{unit.h}}\index{unit.h@{unit.h}!Reset@{Reset}}}\Hypertarget{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa92793663441ced378f4676b8a6524385}\label{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa92793663441ced378f4676b8a6524385} 
+Reset&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Scale@{Scale}!unit.h@{unit.h}}\index{unit.h@{unit.h}!Scale@{Scale}}}\Hypertarget{a00008_a7db25bf19d57ba0281f282d35bcd6ccfafce22dbfac1abe111694582ef911007e}\label{a00008_a7db25bf19d57ba0281f282d35bcd6ccfafce22dbfac1abe111694582ef911007e} 
+Scale&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ValueH@{ValueH}!unit.h@{unit.h}}\index{unit.h@{unit.h}!ValueH@{ValueH}}}\Hypertarget{a00008_a7db25bf19d57ba0281f282d35bcd6ccfaa3f554d2e12582620532b0a55bfd9ecd}\label{a00008_a7db25bf19d57ba0281f282d35bcd6ccfaa3f554d2e12582620532b0a55bfd9ecd} 
+ValueH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ValueL@{ValueL}!unit.h@{unit.h}}\index{unit.h@{unit.h}!ValueL@{ValueL}}}\Hypertarget{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa4a85e82db31fc73cd86b24bda3ddfc38}\label{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa4a85e82db31fc73cd86b24bda3ddfc38} 
+ValueL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{a00008_source_l00049}{49}} of file \mbox{\hyperlink{a00008_source}{unit.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}{Status}}\ =\ 0,}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa1fd765afe57f4f4d76ef35e29c987344}{SPS\_H}},}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfab57f7a7549307cb6c577654488969c85}{SPS\_L}},}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa92793663441ced378f4676b8a6524385}{Reset}},}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfafce22dbfac1abe111694582ef911007e}{Scale}},}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfaa3f554d2e12582620532b0a55bfd9ecd}{ValueH}},}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa4a85e82db31fc73cd86b24bda3ddfc38}{ValueL}}\ }
+\DoxyCodeLine{00057\ \}\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccf}{enmRegs}};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{a00008_ab388b1960fa20cb2e0ddc6a8316c5202}\label{a00008_ab388b1960fa20cb2e0ddc6a8316c5202} 
+\index{unit.h@{unit.h}!Ini\_Lvl\_sens@{Ini\_Lvl\_sens}}
+\index{Ini\_Lvl\_sens@{Ini\_Lvl\_sens}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{Ini\_Lvl\_sens()}{Ini\_Lvl\_sens()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{a00008_a36c7ac0b0ecc5ad267d84396398e7ed9}{lvl\+\_\+sens}} \texorpdfstring{$\ast$}{*} Ini\+\_\+\+Lvl\+\_\+sens (\begin{DoxyParamCaption}\item[{i2c\+\_\+t}]{dev,  }\item[{\mbox{\hyperlink{a00008_ace9d960e74685e2cd84b36132dbbf8aa}{u16}}}]{adr,  }\item[{\mbox{\hyperlink{a00008_a92c50087ca0e64fa93fc59402c55f8ca}{u8}}}]{flags }\end{DoxyParamCaption})}
+
+
+
+initialization of sensor 
+
+Dynamic create instance of sensor 
+\begin{DoxyParams}{Parameters}
+{\em dev\mbox{[}in\mbox{]}} & I2C hardware device \\
+\hline
+{\em adr\mbox{[}in\mbox{]}} & adress of I2C device \\
+\hline
+{\em flags\mbox{[}in\mbox{]}} & addressing format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if susseful instance of level sensor else NULL 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{a00005_source_l00078}{78}} of file \mbox{\hyperlink{a00005_source}{unit.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ create\ dynamic\ instance}}
+\DoxyCodeLine{00080\ \ \ \mbox{\hyperlink{a00027}{lvl\_sens}}\ *\ t\ =\ calloc(1,\textcolor{keyword}{sizeof}(\mbox{\hyperlink{a00027}{lvl\_sens}}));}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordflow}{if}(t\ !=\ NULL)\{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ fill\ feld\ of\ struct\ of\ level\ sensor}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 7;\ i++)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ t-\/>\mbox{\hyperlink{a00027_ab1e847c353bb82118ec07bd0817c739b}{RegsSens}}[i].\mbox{\hyperlink{a00023_a22b681fe50794ca71427c8b5cd1327a5}{RegAddr}}\ =\ i;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *tNameReg\ =\ \textcolor{stringliteral}{"{}Status"{}};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (i)\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:tNameReg\ =\ \textcolor{stringliteral}{"{}SPS\_H"{}};\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:tNameReg\ =\ \textcolor{stringliteral}{"{}SPS\_L"{}};\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:tNameReg\ =\ \textcolor{stringliteral}{"{}Reset"{}};\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:tNameReg\ =\ \textcolor{stringliteral}{"{}Scale"{}};\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 5:tNameReg\ =\ \textcolor{stringliteral}{"{}ValueH"{}};\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 6:tNameReg\ =\ \textcolor{stringliteral}{"{}ValueL"{}};\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ t-\/>\mbox{\hyperlink{a00027_ab1e847c353bb82118ec07bd0817c739b}{RegsSens}}[i].\mbox{\hyperlink{a00023_a07173328c6f52dab0d9b3623db9299e7}{pNameReg}}\ =\ tNameReg;}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ t-\/>\mbox{\hyperlink{a00027_a1bdd3e195c256025c99f9ffd35128c0b}{i2c\_dev}}\ =\ dev;}
+\DoxyCodeLine{00098\ \ \ \ \ t-\/>\mbox{\hyperlink{a00027_a44066b8a632e8923eb6811f7b61527cf}{adr\_dev}}\ =\ adr;}
+\DoxyCodeLine{00099\ \ \ \ \ t-\/>\mbox{\hyperlink{a00027_a7da471025200ac90b22c0ab144a5197d}{mflags}}\ =\ flags;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ sleep(300);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wait\ for\ ready\ after\ power\ on}}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{a00005_a1ed933b367f8cb97f21356ee29cf0854}{Reset\_Lvl\_sens}}(t))\textcolor{keywordflow}{return}\ \ NULL;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ reset\ sensor}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{a00005_acb296fb5e6df09cf7d8bd60291490a33}{Write\_Settings}}(t,\ \&\mbox{\hyperlink{a00005_afe9b8e438ee99515add7356183b19264}{default\_sett}}))\textcolor{keywordflow}{return}\ \ NULL;\ \ \textcolor{comment}{//\ write\ settings}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{a00005_ab21be7a9ce1caea2ddc2d3771964f9ad}{CheckSettings}}\ (t,\ \&\mbox{\hyperlink{a00005_afe9b8e438ee99515add7356183b19264}{default\_sett}}))\textcolor{keywordflow}{return}\ \ NULL;\ \ \textcolor{comment}{//\ check\ corect\ writing}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{return}\ \ NULL;}
+\DoxyCodeLine{00109\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/dee/a00008_ab388b1960fa20cb2e0ddc6a8316c5202_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{a00008_a7527fdbdb826936bdf1529357eca12e6}\label{a00008_a7527fdbdb826936bdf1529357eca12e6} 
+\index{unit.h@{unit.h}!runtimeCycle@{runtimeCycle}}
+\index{runtimeCycle@{runtimeCycle}!unit.h@{unit.h}}
+\doxysubsubsection{\texorpdfstring{runtimeCycle()}{runtimeCycle()}}
+{\footnotesize\ttfamily float runtime\+Cycle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00008_a36c7ac0b0ecc5ad267d84396398e7ed9}{lvl\+\_\+sens}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+sens }\end{DoxyParamCaption})}
+
+
+
+runtime get level 
+
+dynamic calc period ms of scan and call sleep func 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+sens} & instance of level sensor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if susseful -\/ value (float) of Level in meter, else if wiat for RDY -\/ (-\/1) if have a ERR -\/ (-\/2) if have a OVF -\/ (-\/3) if Unsuccessful write settings -\/ (-\/4) 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} check corect writing
+
+\texorpdfstring{$<$}{<} check corect writing
+
+Definition at line \mbox{\hyperlink{a00005_source_l00211}{211}} of file \mbox{\hyperlink{a00005_source}{unit.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ sleep(\mbox{\hyperlink{a00008_afd8c16fb4f5b1df43ee3446a5d635a29}{CALC\_DELAY\_MS}}(\mbox{\hyperlink{a00005_afe9b8e438ee99515add7356183b19264}{default\_sett}}.\mbox{\hyperlink{a00031_aa41cbb59bbd843698521505d21ba2a8a}{dSPS}}));}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ now\ =\ 0;}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{float}\ Value\ =\ (-\/1.0f);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00005_a2cd16347dd89d9ad36c8d506dbcd6fd5}{Read\_reg}}(p\_sens\ ,\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa2cd232468a1fc44d4cc5c004e3e9dd72}{Status}});\ \ }
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p\_sens-\/>\ \mbox{\hyperlink{a00008_a735563036dced0b7d6cc98f97ea4978b}{ERR}})\{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ Value\ =\ (-\/2.0f);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{a00005_acb296fb5e6df09cf7d8bd60291490a33}{Write\_Settings}}(p\_sens,\&\mbox{\hyperlink{a00005_afe9b8e438ee99515add7356183b19264}{default\_sett}})==0)}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{a00005_ab21be7a9ce1caea2ddc2d3771964f9ad}{CheckSettings}}\ (p\_sens,\ \&\mbox{\hyperlink{a00005_afe9b8e438ee99515add7356183b19264}{default\_sett}}))\ Value\ =\ (-\/4.0f);\ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Value;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p\_sens-\/>\ \mbox{\hyperlink{a00008_a5216d2e3e3239980d8a5619ead0b9542}{OVF}})\{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ Value\ =\ (-\/3.0f);}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00005_afe9b8e438ee99515add7356183b19264}{default\_sett}}.\mbox{\hyperlink{a00031_aea0e21e4b25346cf13aa3de9954ea6a5}{dScale}}++;\ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{a00005_acb296fb5e6df09cf7d8bd60291490a33}{Write\_Settings}}(p\_sens,\&\mbox{\hyperlink{a00005_afe9b8e438ee99515add7356183b19264}{default\_sett}})==0)}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{a00005_ab21be7a9ce1caea2ddc2d3771964f9ad}{CheckSettings}}\ (p\_sens,\ \&\mbox{\hyperlink{a00005_afe9b8e438ee99515add7356183b19264}{default\_sett}}))\ Value\ =\ (-\/4.0f);\ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Value;}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p\_sens-\/>\ \mbox{\hyperlink{a00008_a8e5ff4392f5959085158d690eefe5659}{RDY}})\{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00005_a2cd16347dd89d9ad36c8d506dbcd6fd5}{Read\_reg}}(p\_sens\ ,\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfaa3f554d2e12582620532b0a55bfd9ecd}{ValueH}});\ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00005_a2cd16347dd89d9ad36c8d506dbcd6fd5}{Read\_reg}}(p\_sens\ ,\mbox{\hyperlink{a00008_a7db25bf19d57ba0281f282d35bcd6ccfa4a85e82db31fc73cd86b24bda3ddfc38}{ValueL}});\ }
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{a00008_ace9d960e74685e2cd84b36132dbbf8aa}{u16}}\ val\_raw\ =\ \mbox{\hyperlink{a00008_a828c4276f3339f7ae88b061c0c444408}{VAL\_SENS}}(p\_sens\ );}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ Value\ =\ \mbox{\hyperlink{a00008_a0988fc69a4d6edef51b89d412eb1af0c}{PARS\_VAL}}(p\_sens,\ val\_raw);}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordflow}{return}\ Value;}
+\DoxyCodeLine{00238\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/dee/a00008_a7527fdbdb826936bdf1529357eca12e6_cgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,5 @@
+<map id="Read_reg" name="Read_reg">
+<area shape="rect" id="Node000001" title="read one register from sensor" alt="" coords="151,5,227,32"/>
+<area shape="rect" id="Node000002" href="$dd/dad/a00005.html#a7527fdbdb826936bdf1529357eca12e6" title="runtime get level" alt="" coords="5,5,103,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,21,103,21,103,16,135,16"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="runtimeCycle" name="runtimeCycle">
+<area shape="rect" id="Node000001" title="runtime get level" alt="" coords="5,56,103,83"/>
+<area shape="rect" id="Node000002" href="$dd/dad/a00005.html#ab21be7a9ce1caea2ddc2d3771964f9ad" title="Compare settings insight sensor and given instance of settings." alt="" coords="151,5,258,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,53,147,35,149,40,97,58"/>
+<area shape="rect" id="Node000004" href="$dd/dad/a00005.html#a2cd16347dd89d9ad36c8d506dbcd6fd5" title="read one register from sensor" alt="" coords="166,56,243,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="103,67,151,67,151,72,103,72"/>
+<area shape="rect" id="Node000005" href="$dd/dad/a00005.html#acb296fb5e6df09cf7d8bd60291490a33" title="write settings to sensor" alt="" coords="151,107,258,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="97,81,149,99,147,104,95,86"/>
+<area shape="rect" id="Node000003" href="$dd/dad/a00005.html#af8cce9b742da4542995d2e4e34560989" title="read all registers from sensor" alt="" coords="306,5,411,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="258,16,290,16,290,21,258,21"/>
+<area shape="rect" id="Node000006" href="$dd/dad/a00005.html#a11d9ec430fbbea6952af2ee8ef00f39a" title="get instance of given index register" alt="" coords="323,107,395,133"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="258,117,307,117,307,123,258,123"/>
+</map>

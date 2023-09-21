@@ -1,0 +1,12 @@
+<map id="GetRegs" name="GetRegs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="311,31,383,57"/>
+<area shape="rect" id="Node000002" href="$dd/dad/a00005.html#a1ed933b367f8cb97f21356ee29cf0854" title=" " alt="" coords="151,5,263,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,37,263,31,264,26,296,32"/>
+<area shape="rect" id="Node000004" href="$dd/dad/a00005.html#acb296fb5e6df09cf7d8bd60291490a33" title=" " alt="" coords="153,56,261,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="296,56,262,62,261,57,295,51"/>
+<area shape="rect" id="Node000003" href="$dd/dad/a00005.html#ab388b1960fa20cb2e0ddc6a8316c5202" title="initialization of sensor" alt="" coords="8,5,100,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="135,21,100,21,100,16,135,16"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="149,53,96,35,97,30,151,48"/>
+<area shape="rect" id="Node000005" href="$dd/dad/a00005.html#a7527fdbdb826936bdf1529357eca12e6" title=" " alt="" coords="5,56,103,83"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="138,72,103,72,103,67,138,67"/>
+</map>
